@@ -38,7 +38,7 @@ void setup() {
   setup_i2n(SAMPLERATE, 16, 0);
 
   int n = 0;
-  char p[] = "sineosc(asd, 110);";
+  char p[] = "sineosc(asd, 55); sineosc(asd, 110); sineosc(asd, 220); sineosc(asd, 440);";
   Token* tokens = tokenize(p, &n);
   si = createSlangInterpreter(tokens, n);
   interpret(si);
