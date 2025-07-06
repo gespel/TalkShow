@@ -38,7 +38,7 @@ void setup() {
   setup_i2n(SAMPLERATE, 16, 0);
 
   int n = 0;
-  char p[] = "sineosc(asd, 55); sineosc(asd, 110); sineosc(asd, 220); sineosc(asd, 440);";
+  char p[] = "sineosc(asd, 55);";
   Token* tokens = tokenize(p, &n);
   si = createSlangInterpreter(tokens, n);
   interpret(si);
@@ -49,7 +49,7 @@ size_t bytes_written = 0;
 void loop() {
   double* buf = renderBuffer(sbc);
   for(int i = 0; i < BUFFERSIZE; i++) {
-    buf[i] *= 4000;
+    buf[i] *= 40000;
     audioBuffer[i] = buf[i];
   }
   i2s_write((i2s_port_t)0, audioBuffer, sizeof(uint16_t)*BUFFERSIZE, &bytes_written, portMAX_DELAY);
